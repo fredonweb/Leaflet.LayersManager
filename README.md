@@ -1,5 +1,7 @@
 # Layers Manager for Leaflet
 
-<p>Test de développement d'un plugin Leaflet</p>
+Test de développement d'un plugin Leaflet
 
-<p><a href="https://fredonweb.github.io/Leaflet.LayersManager" target="_blank">démo page</a></p>
+## Démo page
+
+[https://fredonweb.github.io/Leaflet.LayersManager/](https://fredonweb.github.io/Leaflet.LayersManager/)
