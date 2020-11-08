@@ -8,4 +8,4 @@ Test de développement d'un plugin Leaflet
 
 ## Licence
 
-MIT
+Creative Commons Attribution 3.0
