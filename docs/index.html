@@ -15,7 +15,7 @@
   </head>
 
   <body>
-    <div id="hello" onclick="functionTest();">Hello !</div>
+    <div id="hello" onclick="test();">Hello !</div>
     <div id="mapid" class="maps"></div>
 
     <script type="text/javascript">
@@ -32,8 +32,8 @@
     	 }).addTo(mymap);
     </script>
     <script>
-        function functionTest() {
-          document.getElementById('hello').display = 'none';
+        function test() {
+          document.getElementById('hello').style.display = 'none';
         }
     </script>
     <script src="LayersManager.js"></script>
