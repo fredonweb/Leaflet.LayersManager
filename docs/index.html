@@ -30,29 +30,40 @@
     		  tileSize: 512,
     		  zoomOffset: -1
     	 }).addTo(map);
-       var menu = L.layersManager({ position: 'topright' })
-       menu.addTo(map);
-       /*var stateChangingButton = L.easyButton({
-           states: [{
-                   stateName: 'zoom-to-forest',        // name the state
-                   icon:      'fa-tree',               // and define its properties
-                   title:     'zoom to a forest',      // like its title
-                   onClick: function(btn, map) {       // and its callback
-                       map.setView([46.25,-121.8],10);
-                       btn.state('zoom-to-school');    // change state on click!
-                   }
-               }, {
-                   stateName: 'zoom-to-school',
-                   icon:      'fa-university',
-                   title:     'zoom to a school',
-                   onClick: function(btn, map) {
-                       map.setView([42.3748204,-71.1161913],16);
-                       btn.state('zoom-to-forest');
-                   }
-           }]
-       });
+       /*var menu = L.layersManager({ position: 'topright' })
+       menu.addTo(map);*/
 
-       stateChangingButton.addTo(map);*/
+       var attribution = '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+
+mapnikLayer = L.tileLayer(
+    'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    {attribution: attribution}
+)
+var blackAndWhite = L.tileLayer(
+    'http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png',
+    {attribution: attribution}
+)
+var clouds = L.tileLayer('http://{s}.tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
+    opacity: 0.5
+})
+
+map = L.map('map', {
+    center: new L.LatLng(39.73, -104.99),
+    zoom: 10,
+    layers: [mapnikLayer, clouds]
+})
+
+var baseLayers = {
+    'Mapnik': mapnikLayer,
+    'Black and Whilte': blackAndWhite
+}
+var overlayLayers = {
+    'Clouds': clouds
+}
+
+var control = L.control.selectLayers(baseLayers, overlayLayers)
+control.addTo(map)
 
 
     </script>
