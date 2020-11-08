@@ -324,10 +324,10 @@ L.Control.EasyButton = L.Control.extend({
     /*var bar = L.easyBar([this], {
       position: this.options.position,
       leafletClasses: this.options.leafletClasses
-    });*/
+    });
     this._anonymousBar = bar;
     this._container = bar.container;
-    return this._anonymousBar.container;
+    return this._anonymousBar.container;*/
   },
 
   removeFrom: function (map) {
