@@ -1,3 +1,3 @@
-function functionTest() {
-  document.getElementById('hello').display = 'none';
+function test() {
+    document.getElementById('hello').style.display = 'none';
 }
