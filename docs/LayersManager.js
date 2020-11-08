@@ -11,7 +11,7 @@
 
     // attach your plugin to the global 'L' variable
     if (typeof window !== 'undefined' && window.L) {
-        window.L.YourPlugin = factory(L);
+        window.L.layersManager = factory(L);
     }
 }(function (L) {
     var layersManager = {};
