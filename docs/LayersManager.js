@@ -1,29 +1,22 @@
-(function(){
-  initialize: function(buttons, options){
+(function (factory, window) {
 
-    if(options){
-      L.Util.setOptions( this, options );
+    // define an AMD module that relies on 'leaflet'
+    if (typeof define === 'function' && define.amd) {
+        define(['leaflet'], factory);
+
+    // define a Common JS module that relies on 'leaflet'
+    } else if (typeof exports === 'object') {
+        module.exports = factory(require('leaflet'));
     }
 
-    this._buildContainer();
-    this._buttons = [];
-
-    for(var i = 0; i < buttons.length; i++){
-      buttons[i]._bar = this;
-      buttons[i]._container = buttons[i].button;
-      this._buttons.push(buttons[i]);
-      this.container.appendChild(buttons[i].button);
+    // attach your plugin to the global 'L' variable
+    if (typeof window !== 'undefined' && window.L) {
+        window.L.YourPlugin = factory(L);
     }
+}(function (L) {
+    var layersManager = {};
+    // implement your plugin
 
-    },
-
-  onAdd: function () {
-    return this.container;
-  }
-
-});
-
-L.layersManager = function(/* args will pass automatically */){
-  var args = Array.prototype.concat.apply([L.Control.layersManager],arguments);
-  return new (Function.prototype.bind.apply(L.Control.layersManager, args));
-};
+    // return your plugin when you are done
+    return layersManager;
+}, window));
