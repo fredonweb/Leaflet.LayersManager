@@ -21,8 +21,7 @@
     return myLayersManager;
 }, window));*/
 
-/* global define, XMLHttpRequest */
-L.Control.myLayersManager = L.Control.extend({
+L.Control.layersManager = L.Control.extend({
   options: {
     position: 'topright'
   },
@@ -30,40 +29,15 @@ L.Control.myLayersManager = L.Control.extend({
     L.Util.setOptions(this, options);
   },
   onAdd: function(map) {
-    var controlElementTag = 'div';
-    var controlElementClass = 'my-layers-manager';
-    var controlElement = L.DomUtil.create(controlElementTag, controlElementClass);
+    let controlElementTag = 'div';
+    let controlElementClass = 'leaflet-layers-manager';
+    let controlElement = L.DomUtil.create(controlElementTag, controlElementClass);
 
     // Continue implementing the control here.
 
     return controlElement;
   }
 });
-L.myLayersManager = function(options) {
-  return new L.Control.myLayersManager(options);
+L.layersManager = function(options) {
+  return new L.Control.layersManager(options);
 };
-
-
-/*L.Control.layersManager = L.Control.Layers.extend({
-    options: {
-        position: 'topright',
-    },
-
-    initialize: function (options) {
-      L.Util.setOptions(this, options)
-    },
-
-    onAdd: function (map) {
-      var className = 'leaflet-control-geocoder-ban'
-      var container = this.container = L.DomUtil.create('div', className + ' leaflet-bar')
-      var icon = this.icon = L.DomUtil.create('button', className + '-icon', container)
-      var form = this.form = L.DomUtil.create('div', className + '-form', container)
-      var input
-
-      icon.innerHTML = '&nbsp;'
-      icon.type = 'button'
-    },
-});
-L.Control.layersManager = function(baseLayers, overlays, options) {
-    return new L.Control.layersManager(baseLayers, overlays, options);
-};*/

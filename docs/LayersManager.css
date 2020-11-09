@@ -14,8 +14,13 @@ html, body {
     height: 100%;
 }
 
-.my-layers-manager {
-  width: 200px;
-  height: 100px;
+.leaflet-layers-manager {
   background-color: white;
+  padding: 4px 10px;
+  margin: 0;
+  width: 200px;
+  border-radius: 6px;
+  -webkit-box-shadow: -1px 1px 4px rgba(0, 0, 0, .5);
+  -moz-box-shadow: -1px 1px 4px rgba(0, 0, 0, .5);
+  box-shadow: -1px 1px 4px rgba(0, 0, 0, .5);
 }
