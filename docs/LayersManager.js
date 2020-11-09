@@ -320,14 +320,17 @@ L.Control.EasyButton = L.Control.extend({
     return this;
   },
 
-  onAdd: function(map){
-    /*var bar = L.easyBar([this], {
+  /*onAdd: function(map){
+    var bar = L.easyBar([this], {
       position: this.options.position,
       leafletClasses: this.options.leafletClasses
     });
     this._anonymousBar = bar;
     this._container = bar.container;
-    return this._anonymousBar.container;*/
+    return this._anonymousBar.container;
+  },*/
+  onAdd: function () {
+    
   },
 
   removeFrom: function (map) {
