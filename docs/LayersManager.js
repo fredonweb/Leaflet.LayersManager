@@ -40,7 +40,7 @@ L.myLayersManager = L.Control.extend({
   }
 });
 L.myLayersManager = function(options) {
-  return new L.myLayersManager(options);
+  return new L.Control.myLayersManager(options);
 };
 
 
