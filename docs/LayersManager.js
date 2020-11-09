@@ -28,30 +28,20 @@ L.Control.layersManager = L.Control.Layers.extend({
         position: 'topright',
     },
 
-    initialize: function(baseLayers, groupedOverlays, options) {
-      var i,
-          j;
-      L.Util.setOptions(this, options);
+    initialize: function (options) {
+      L.Util.setOptions(this, options)
+    },
 
-      this._layerControlInputs = [];
-      this._layers = [];
-      this._lastZIndex = 0;
-      this._handlingClick = false;
-      this._groupList = [];
-      this._domGroups = [];
+    onAdd: function (map) {
+      var className = 'leaflet-control-geocoder-ban'
+      var container = this.container = L.DomUtil.create('div', className + ' leaflet-bar')
+      var icon = this.icon = L.DomUtil.create('button', className + '-icon', container)
+      var form = this.form = L.DomUtil.create('div', className + '-form', container)
+      var input
 
-      /*for (i in baseLayers) {
-          for (var j in baseLayers[i].layers) {
-              this._addLayer(baseLayers[i].layers[j], j, baseLayers[i], false);
-          }
-      }
-
-      for (i in groupedOverlays) {
-          for (var j in groupedOverlays[i].layers) {
-              this._addLayer(groupedOverlays[i].layers[j], j, groupedOverlays[i], true);
-          }
-      }*/
-    }
+      icon.innerHTML = '&nbsp;'
+      icon.type = 'button'
+    },
 });
 L.Control.layersManager = function(baseLayers, overlays, options) {
     return new L.Control.layersManager(baseLayers, overlays, options);
