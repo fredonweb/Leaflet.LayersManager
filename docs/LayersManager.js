@@ -23,36 +23,11 @@
 
 /* global define, XMLHttpRequest */
 
-const f = function fFunc (factory, window) {
-  // Universal Module Definition
-  if (typeof define === 'function' && define.amd) {
-    define(['leaflet'], factory)
-  } else if (typeof module !== 'undefined') {
-    // Node/CommonJS
-    module.exports = factory(require('leaflet'))
-  } else {
-    // Browser globals
-    if (typeof window.L === 'undefined') {
-      throw new Error('Leaflet must be loaded first')
-    }
-    factory(window.L)
-  }
-}
-const factory = function factoryFunc (L) {
-  L.layersManager = L.Control.extend({
+L.Control.layersManager = L.Control.Layers.extend({
     options: {
-      position: 'topleft'
-      /*style: 'control',
-      placeholder: 'adresse',
-      resultsNumber: 7,
-      collapsed: true,
-      serviceUrl: 'https://api-adresse.data.gouv.fr/search/',
-      minIntervalBetweenRequests: 250,
-      defaultMarkgeocode: true,
-      autofocus: true*/
+        position: 'topright',
     },
-  })
+});
+L.Control.layersManager = function(baseLayers, overlays, options) {
+    return new L.Control.layersManager(baseLayers, overlays, options);
 };
-L.layersManager = function (options) {
-    return new L.layersManager(options)
-}
