@@ -22,8 +22,29 @@
 }, window));*/
 
 /* global define, XMLHttpRequest */
+L.myLayersManager = L.Control.extend({
+  options: {
+    position: 'topright'
+  },
+  initialize: function(options) {
+    L.Util.setOptions(this, options);
+  },
+  onAdd: function(map) {
+    var controlElementTag = 'div';
+    var controlElementClass = 'my-leaflet-control';
+    var controlElement = L.DomUtil.create(controlElementTag, controlElementClass);
 
-L.Control.layersManager = L.Control.Layers.extend({
+    // Continue implementing the control here.
+
+    return controlElement;
+  }
+});
+L.myLayersManager = function(options) {
+  return new L.myLayersManager(options);
+};
+
+
+/*L.Control.layersManager = L.Control.Layers.extend({
     options: {
         position: 'topright',
     },
@@ -45,4 +66,4 @@ L.Control.layersManager = L.Control.Layers.extend({
 });
 L.Control.layersManager = function(baseLayers, overlays, options) {
     return new L.Control.layersManager(baseLayers, overlays, options);
-};
+};*/
