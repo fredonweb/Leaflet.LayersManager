@@ -31,7 +31,7 @@ L.myLayersManager = L.Control.extend({
   },
   onAdd: function(map) {
     var controlElementTag = 'div';
-    var controlElementClass = 'my-leaflet-control';
+    var controlElementClass = 'my-layers-manager';
     var controlElement = L.DomUtil.create(controlElementTag, controlElementClass);
 
     // Continue implementing the control here.
