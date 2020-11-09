@@ -22,7 +22,7 @@
 }, window));*/
 
 /* global define, XMLHttpRequest */
-L.myLayersManager = L.Control.extend({
+L.Control.myLayersManager = L.Control.extend({
   options: {
     position: 'topright'
   },
