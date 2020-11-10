@@ -33,9 +33,9 @@ L.Control.layersManager = L.Control.extend({
     //let controlElementTag = 'div';
     let controlElementClassName = 'leaflet-layers-manager';
 
-    let controlElement = this.controlElement = L.DomUtil.create('div', controlElementClass);
-    let title = this.title = L.DomUtil.create('div', className + '-title', controlElement)
-    let list = this.list = L.DomUtil.create('div', className + '-list', controlElement)
+    let controlElement = this.controlElement = L.DomUtil.create('div', controlElementClassName);
+    let title = this.title = L.DomUtil.create('div', controlElementClassName + '-title', controlElement)
+    let list = this.list = L.DomUtil.create('div', controlElementClassName + '-list', controlElement)
 
     // Continue implementing the control here.
 
