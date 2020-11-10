@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Leaflet Layers Manager</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" media="screen,projection">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""/>
@@ -34,6 +37,24 @@
        var menu = new L.layersManager({ position: 'topright' });
        menu.addTo(map);
 
+       const listCommand = document.getElementById('show-hide');
+
+       listCommand.onclick = function() {
+         let div = document.getElementById('leaflet-layers-manager-list');
+         let title = document.getElementById('show-hide-btn');
+         if (div.style.display !== 'none') {
+             div.style.display = 'none';
+             title.innerHTML = 'keyboard_arrow_down';
+         }
+         else {
+             div.style.display = 'block';
+             title.innerHTML = 'keyboard_arrow_up';
+
+         }
+       };
+       function loadMarkers(){
+         //Do nothing
+       };
     </script>
   </body>
 </html>

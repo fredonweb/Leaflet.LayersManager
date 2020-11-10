@@ -3,15 +3,15 @@
 **/
 
 html, body {
-    width:100%;
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
+  width:100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
 }
 
 .maps {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .leaflet-layers-manager {
@@ -24,4 +24,81 @@ html, body {
   /*-webkit-box-shadow: -1px 1px 4px rgba(0, 0, 0, .5);
   -moz-box-shadow: -1px 1px 4px rgba(0, 0, 0, .5);
   box-shadow: -1px 1px 4px rgba(0, 0, 0, .5);*/
+}
+.leaflet-layers-manager h6 {
+  font-size: 1rem;
+  margin: 0 0 0 -6px;
+  cursor: pointer;
+}
+.leaflet-layers-manager h6 span {
+  /*vertical-align: middle;
+  height: inherit;
+  display: inline-block;*/
+  line-height: 24px;
+  margin-left: -16px;
+}
+
+.leaflet-layers-manager-list {
+  margin: 0
+}
+.leaflet-layers-manager-list li {
+  line-height: 24px;
+}
+.leaflet-layers-manager-box {
+  margin: 0;
+}
+.leaflet-layers-manager [type="checkbox"] + span:not(.lever) {
+  position: relative;
+  padding-left: 16px;
+  cursor: pointer;
+  display: inline-block;
+  height: 20px;
+  line-height: 14px;
+  color: black;
+  font-size: 0.95rem;
+  font-weight: 300;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.leaflet-layers-manager [type="checkbox"] + span:not(.lever)::before,
+.leaflet-layers-manager [type="checkbox"]:not(.filled-in) + span:not(.lever)::after,
+.leaflet-layers-manager [type="checkbox"]:checked + span:not(.lever)::before {
+  margin: 1px 0 0 0;
+  width: 12px;
+  height: 12px;
+}
+.leaflet-layers-manager [type="checkbox"]:checked + span:not(.lever)::before {
+  border-right: 2px solid rgb(237, 47, 72);
+  border-bottom: 2px solid rgb(237, 47, 72);
+}
+.leaflet-layers-manager [type="checkbox"]:checked + span:not(.lever)::before {
+  top: 0;
+}
+.leaflet-layers-manager [type="radio"]:not(:checked) + span,
+.leaflet-layers-manager [type="radio"]:checked + span {
+  position: relative;
+  padding-left: 26px;
+  cursor: pointer;
+  display: inline-block;
+  height: 20px;
+  line-height: 14px;
+  font-size: 0.90rem;
+  font-weight: 300;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.leaflet-layers-manager [type="radio"] + span::before, [type="radio"] + span::after {
+  margin: 2px 0 0 12px;
+  width: 10px;
+  height: 10px;
+}
+.leaflet-layers-manager [type="radio"]:checked + span::after, [type="radio"].with-gap:checked + span::after {
+  background-color: rgb(237, 47, 72);
+}
+.leaflet-layers-manager [type="radio"]:checked + span::after, [type="radio"].with-gap:checked + span::before, [type="radio"].with-gap:checked + span::after {
+  border: 2px solid rgb(237, 47, 72);
 }
