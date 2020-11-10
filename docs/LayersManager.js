@@ -29,13 +29,14 @@ L.Control.layersManager = L.Control.extend({
     L.Util.setOptions(this, options);
   },
   onAdd: function(map) {
-    let controlElementTag = 'div';
-    let controlElementClass = 'leaflet-layers-manager';
-    let title = '-title';
-    let list = '-list';
-    let controlElement = L.DomUtil.create(controlElementTag, controlElementClass);
-    let controlElement =+ L.DomUtil.create(controlElementTag, controlElementClass + title);
-    let controlElement =+ L.DomUtil.create(controlElementTag, controlElementClass + list);
+
+    //let controlElementTag = 'div';
+    let controlElementClassName = 'leaflet-layers-manager';
+
+    let controlElement = this.controlElement = L.DomUtil.create('div', controlElementClass);
+    let title = this.title = L.DomUtil.create('div', className + '-title', controlElement)
+    let list = this.list = L.DomUtil.create('div', className + '-list', controlElement)
+
     // Continue implementing the control here.
 
     return controlElement;
