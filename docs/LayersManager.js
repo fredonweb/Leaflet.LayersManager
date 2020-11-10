@@ -31,8 +31,11 @@ L.Control.layersManager = L.Control.extend({
   onAdd: function(map) {
     let controlElementTag = 'div';
     let controlElementClass = 'leaflet-layers-manager';
+    let title = '-title';
+    let list = '-list';
     let controlElement = L.DomUtil.create(controlElementTag, controlElementClass);
-
+    let controlElement =+ L.DomUtil.create(controlElementTag, controlElementClass + title);
+    let controlElement =+ L.DomUtil.create(controlElementTag, controlElementClass + list);
     // Continue implementing the control here.
 
     return controlElement;
