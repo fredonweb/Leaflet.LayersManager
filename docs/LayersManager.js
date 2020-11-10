@@ -35,8 +35,9 @@ L.Control.layersManager = L.Control.extend({
     let controlElement = this.controlElement = L.DomUtil.create('div', controlElementClassName);
     // title
     let title = this.title = L.DomUtil.create('h6', controlElementClassName + '-title', controlElement);
-    title.innerHTML = '<i id="show-hide-btn" class="material-icons left">keyboard_arrow_down</i><span>Détails de la carte</span>';
+    title.innerHTML = '<i id="show-hide-btn" class="material-icons left">keyboard_arrow_up</i><span>Détails de la carte</span>';
     title.id = 'show-hide';
+
     // <ul>
     let list = this.list = L.DomUtil.create('ul', controlElementClassName + '-list', controlElement);
     list.id = 'leaflet-layers-manager-list';

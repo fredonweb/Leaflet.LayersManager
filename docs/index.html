@@ -41,14 +41,16 @@
 
        listCommand.onclick = function() {
          let div = document.getElementById('leaflet-layers-manager-list');
-         let title = document.getElementById('show-hide-btn');
+         let icon = document.getElementById('show-hide-btn');
          if (div.style.display !== 'none') {
              div.style.display = 'none';
-             title.innerHTML = 'keyboard_arrow_down';
+             icon.style.transform = 'rotateX(180deg)';
+             //icon.innerHTML = 'keyboard_arrow_down';
          }
          else {
              div.style.display = 'block';
-             title.innerHTML = 'keyboard_arrow_up';
+             icon.style.transform = 'rotateX(0deg)';
+             //title.innerHTML = 'keyboard_arrow_up';
 
          }
        };

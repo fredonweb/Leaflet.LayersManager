@@ -31,22 +31,30 @@ html, body {
   cursor: pointer;
 }
 .leaflet-layers-manager h6 span {
-  /*vertical-align: middle;
-  height: inherit;
-  display: inline-block;*/
   line-height: 24px;
   margin-left: -16px;
 }
-
+#show-hide-btn {
+  transform: rotateX(180deg);
+  transition: transform .5s,-webkit-transform .5s;
+}
 .leaflet-layers-manager-list {
-  margin: 0
+  animation: fadeIn 250ms ease-in-out both;
+}
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
 }
 .leaflet-layers-manager-list li {
   line-height: 24px;
 }
-.leaflet-layers-manager-box {
+/*.leaflet-layers-manager-box {
   margin: 0;
-}
+}*/
 .leaflet-layers-manager [type="checkbox"] + span:not(.lever) {
   position: relative;
   padding-left: 16px;
