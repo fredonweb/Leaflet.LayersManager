@@ -85,6 +85,7 @@ html, body {
   display: inline-block;
   height: 20px;
   line-height: 14px;
+  color: black;
   font-size: 0.90rem;
   font-weight: 300;
   -webkit-user-select: none;
@@ -102,4 +103,8 @@ html, body {
 }
 .leaflet-layers-manager [type="radio"]:checked + span::after, [type="radio"].with-gap:checked + span::before, [type="radio"].with-gap:checked + span::after {
   border: 2px solid rgb(237, 47, 72);
+}
+.disabled {
+    color: lightgray !important;
+    font-weight: lighter !important;
 }

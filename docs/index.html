@@ -17,7 +17,7 @@
     <script src="LayersManager.js"></script>
     <link rel="stylesheet" href="LayersManager.css" />
   </head>
-  
+
   <body>
     <div id="mapId" class="maps"></div>
 
@@ -34,7 +34,90 @@
     		  zoomOffset: -1
     	 }).addTo(map);
 
-       var menu = new L.layersManager({ position: 'topright' });
+       var menu = new L.layersManager({
+         position: 'topright',
+         layers: [{
+           layerName: 'GIE La Ville Autrement',
+           inputType: 'checkbox',
+           layerFunctionOn: 'loadMarkers()',
+           layerFunctionOff: 'clearLayer(1)'
+         }, {
+           layerName: 'Cadastre',
+           inputType: 'checkbox',
+           layerFunctionOn: 'loadParcels()',
+           layerFunctionOff: 'clearLayer(2)'
+         }, {
+           layerName: 'PLU-H',
+           inputName: 'pluh',
+           inputType: 'checkbox',
+           layerFunctionOn: '',
+           layerFunctionOff: 'clearLayer(3)'
+         }, {
+           layerName: 'Zonage et réglement',
+           inputName: 'pluh',
+           inputType: 'radio',
+           layerFunctionOn: 'loadPluh("aLayerName1")'
+         }, {
+           layerName: 'Orientations d\'Aménagement et de Programmation',
+           inputName: 'pluh',
+           inputType: 'radio',
+           layerFunctionOn: 'loadPluh("aLayerName2")'
+         }, {
+           layerName: 'Périmètres d\'attente de projet',
+           inputName: 'pluh',
+           inputType: 'radio',
+           layerFunctionOn: 'loadPluh("aLayerName3")'
+         }, {
+           layerName: 'Secteurs de mixité sociale',
+           inputName: 'pluh',
+           inputType: 'radio',
+           layerFunctionOn: 'loadPluh("aLayerName4")'
+         }, {
+           layerName: 'Réservations pour programmes de logements',
+           inputName: 'pluh',
+           inputType: 'radio',
+           layerFunctionOn: 'loadPluh("aLayerName5")'
+         }, {
+           layerName: 'Emplacements réservés',
+           inputName: 'pluh',
+           inputType: 'radio',
+           layerFunctionOn: 'loadPluh("aLayerName6")'
+         }, {
+           layerName: 'Presctiption de hauteur de façades',
+           inputName: 'pluh',
+           inputType: 'radio',
+           layerFunctionOn: 'loadPluh("aLayerName7")'
+         }, {
+           layerName: 'Secteurs de taille minimale de logement',
+           inputName: 'pluh',
+           inputType: 'radio',
+           layerFunctionOn: 'loadPluh("aLayerName8")'
+         }, {
+           layerName: 'Demandes de valeurs foncières',
+           inputType: 'checkbox',
+           layerFunctionOn: 'loadDvf()',
+           layerFunctionOff: 'clearLayer(4)'
+         }, {
+           layerName: 'Sites et sols pollués',
+           inputName: 'ssp',
+           inputType: 'checkbox',
+           inputDisabled: true,
+           layerFunctionOn: 'loadBasol()',
+           layerFunctionOff: 'clearLayer(5)'
+         }, {
+           layerName: 'BASOL',
+           inputName: 'ssp',
+           inputType: 'radio',
+           inputDisabled: true,
+           layerFunctionOn: 'loadBasol()'
+         }, {
+           layerName: 'BASIAS',
+           inputName: 'ssp',
+           inputType: 'radio',
+           inputDisabled: true,
+           layerFunctionOn: 'loadBasol()'
+         }]
+        });
        menu.addTo(map);
 
        const listCommand = document.getElementById('show-hide');
@@ -54,9 +137,21 @@
 
          }
        };
-       function loadMarkers(){
-         //Do nothing
+       function loadMarkers(a) {
+         console.log('loadMarkers(' + a + ')');
        };
+       function loadParcels(a) {
+         console.log('loadParcels(' + a + ')');
+       };
+       function loadPluh(a) {
+         console.log('loadPluh(' + a + ')');
+       };
+       function loadDvf(a) {
+         console.log('loadDvf(' + a + ')');
+       };
+       function clearLayer(a) {
+         console.log('clearLayer(' + a + ')');
+       }
     </script>
   </body>
 </html>
