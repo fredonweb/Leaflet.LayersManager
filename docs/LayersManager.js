@@ -30,7 +30,6 @@
       //console.log(layersList);
     },
     onAdd: function(map) {
-
       // Container
       let controlElementClassName = 'leaflet-layers-manager';
       let controlElement = this.controlElement = L.DomUtil.create('div', controlElementClassName);
@@ -38,44 +37,41 @@
       let title = this.title = L.DomUtil.create('h6', controlElementClassName + '-title', controlElement);
       title.innerHTML = '<i id="show-hide-btn" class="material-icons left">keyboard_arrow_up</i><span>Détails de la carte</span>';
       title.id = 'show-hide';
-
       // <ul>
       let list = this.list = L.DomUtil.create('ul', controlElementClassName + '-list', controlElement);
       list.id = 'leaflet-layers-manager-list';
       list.style.display = 'none';
-
-      //li
+      //<li>
       for (let i = 0; i < this.options.layers.length; i++) {
         let listElement = this.listElement = L.DomUtil.create('li', '', list);
-
-        //label
-        let onOffClassName = '';
-        if (this.options.layers[i].inputType == 'checkbox') onOffClassName = 'layerIsOff';
+        //<label>
         let listElementLabel = this.listElementLabel = L.DomUtil.create('label', '', listElement);
-        listElementLabel.innerHTML = '<input name="' + this.options.layers[i].inputName + '" type="' + this.options.layers[i].inputType + '" />' +
-                                     '<span id="leaflet-layers-manager-entry-' + i + '" class="' + onOffClassName + '">' + this.options.layers[i].layerName + '</span>';
-
-        //input
-        if (this.options.layers[i].inputDisabled == true || listElementLabel.firstChild.type == 'radio') {
-          listElementLabel.firstChild.disabled = true;
-          listElementLabel.lastChild.classList.add('disabled');
-          listElementLabel.lastChild.style.pointerEvents = 'none';
+        //<input/>
+        let listElementInput = this.listElementInput = L.DomUtil.create('input', 'layerIsOff', listElementLabel);
+        listElementInput.type = '' + this.options.layers[i].inputType + '';
+        listElementInput.name = '' + this.options.layers[i].inputName + '';
+        listElementInput.id = 'leaflet-layers-manager-entry-' + i + '';
+        listElementInput.setAttribute('onClick', '' + this.options.layers[i].layerFunctionOn + '');
+        //<span>
+        let listElementSpan = this.listElementSpan = L.DomUtil.create('span', '', listElementLabel);
+        listElementSpan.innerHTML = '' + this.options.layers[i].layerName + ''
+        //<input disabled/> <input type="radio"/>
+        if (this.options.layers[i].inputDisabled == true || listElementInput.type == 'radio') {
+          listElementInput.disabled = true;
+          listElementSpan.classList.add('disabled');
         }
-
-        //span
-        let listElementSpan = listElementLabel.lastChild;
-        if (this.options.layers[i].inputType == 'checkbox' && this.options.layers[i].inputName !== '') {
-          L.DomEvent.on(listElementSpan, 'click', function (e) {
-            this.onOffSubList('' + this.options.layers[i].inputName + '', '' + this.options.layers[i].layerFunctionOn + '', '' + this.options.layers[i].layerFunctionOff + '')
+        //<input type="checkbox"/>
+        if (this.options.layers[i].inputType == 'checkbox') {
+          listElementInput.classList.add('layerIsOff');
+          L.DomEvent.on(listElementInput, 'click', function (e) {
+            this.onOffElement('leaflet-layers-manager-entry-' + i + '', '' + this.options.layers[i].layerFunctionOn + '', '' + this.options.layers[i].layerFunctionOff + '');
           }, this);
         }
-        if (this.options.layers[i].inputDisabled !== true) {
-          listElementSpan.setAttribute('onClick', '' + this.options.layers[i].layerFunctionOn + '');
-          if (this.options.layers[i].inputType = 'checkbox') {
-            L.DomEvent.on(listElementSpan, 'click', function (e) {
-              this.onOffElement('leaflet-layers-manager-entry-' + i + '', '' + this.options.layers[i].layerFunctionOn + '', '' + this.options.layers[i].layerFunctionOff + '');
-            }, this);
-          }
+        //<input type="radio"/>
+        if (this.options.layers[i].inputType == 'checkbox' && this.options.layers[i].inputName !== '') {
+          L.DomEvent.on(listElementInput, 'click', function (e) {
+            this.onOffSubList('' + this.options.layers[i].inputName + '', '' + this.options.layers[i].layerFunctionOn + '', '' + this.options.layers[i].layerFunctionOff + '')
+          }, this);
         }
       }
 
@@ -93,7 +89,7 @@
             element.classList.remove('layerIsOn');
             element.setAttribute('onClick', '' + functionOn + '');
           }
-      },
+    },
     onOffSubList: function(groupName, functionOn, functionOff) {
       let elements = document.getElementsByName('' + groupName + '');
       for (let i = 0; i < elements.length; i++) {
@@ -101,18 +97,10 @@
           if (elements[i].disabled) {
             elements[i].disabled = false;
             elements[i].nextSibling.classList.remove('disabled');
-            elements[i].nextSibling.style.pointerEvents = 'auto';
           } else {
             elements[i].disabled = true;
             elements[i].checked = false;
             elements[i].nextSibling.classList.add('disabled');
-            elements[i].nextSibling.style.pointerEvents = 'none';
-          }
-        } else {
-          if (elements[i].disabled) {
-            //elements[i].nextSibling.setAttribute('onClick', '' + functionOn + '');
-          } else {
-            //elements[i].nextSibling.setAttribute('onClick', '' + functionOff + '');
           }
         }
       }
