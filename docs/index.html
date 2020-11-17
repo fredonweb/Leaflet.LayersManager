@@ -14,144 +14,135 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
-    <script src="LayersManager.js"></script>
     <link rel="stylesheet" href="LayersManager.css" />
+    <script src="LayersManager.js"></script>
   </head>
 
   <body>
     <div id="mapId" class="maps"></div>
 
     <script type="text/javascript">
-    	 const map = L.map('mapId').setView([45.75, 4.85], 13);
+      const map = L.map('mapId').setView([45.75, 4.85], 13);
 
-    	 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-    	    maxZoom: 22,
-    		  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-    			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-    			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    		  id: 'mapbox/streets-v11',
-    		  tileSize: 512,
-    		  zoomOffset: -1
-    	 }).addTo(map);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      	maxZoom: 20,
+      	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
 
-       var menu = new L.layersManager({
-         position: 'topright',
-         layers: [{
-           layerName: 'GIE La Ville Autrement',
-           inputType: 'checkbox',
-           layerFunctionOn: 'loadMarkers()',
-           layerFunctionOff: 'clearLayer(1)'
-         }, {
-           layerName: 'Cadastre',
-           inputType: 'checkbox',
-           layerFunctionOn: 'loadParcels()',
-           layerFunctionOff: 'clearLayer(2)'
-         }, {
-           layerName: 'PLU-H',
-           inputName: 'pluh',
-           inputType: 'checkbox',
-           layerFunctionOn: '',
-           layerFunctionOff: 'clearLayer(3)'
-         }, {
-           layerName: 'Zonage et réglement',
-           inputName: 'pluh',
-           inputType: 'radio',
-           layerFunctionOn: 'loadPluh("aLayerName1")'
-         }, {
-           layerName: 'Orientations d\'Aménagement et de Programmation',
-           inputName: 'pluh',
-           inputType: 'radio',
-           layerFunctionOn: 'loadPluh("aLayerName2")'
-         }, {
-           layerName: 'Périmètres d\'attente de projet',
-           inputName: 'pluh',
-           inputType: 'radio',
-           layerFunctionOn: 'loadPluh("aLayerName3")'
-         }, {
-           layerName: 'Secteurs de mixité sociale',
-           inputName: 'pluh',
-           inputType: 'radio',
-           layerFunctionOn: 'loadPluh("aLayerName4")'
-         }, {
-           layerName: 'Réservations pour programmes de logements',
-           inputName: 'pluh',
-           inputType: 'radio',
-           layerFunctionOn: 'loadPluh("aLayerName5")'
-         }, {
-           layerName: 'Emplacements réservés',
-           inputName: 'pluh',
-           inputType: 'radio',
-           layerFunctionOn: 'loadPluh("aLayerName6")'
-         }, {
-           layerName: 'Presctiption de hauteur de façades',
-           inputName: 'pluh',
-           inputType: 'radio',
-           layerFunctionOn: 'loadPluh("aLayerName7")'
-         }, {
-           layerName: 'Secteurs de taille minimale de logement',
-           inputName: 'pluh',
-           inputType: 'radio',
-           layerFunctionOn: 'loadPluh("aLayerName8")'
-         }, {
-           layerName: 'Demandes de valeurs foncières',
-           inputType: 'checkbox',
-           layerFunctionOn: 'loadDvf()',
-           layerFunctionOff: 'clearLayer(4)'
-         }, {
-           layerName: 'Sites et sols pollués',
-           inputName: 'ssp',
-           inputType: 'checkbox',
-           inputDisabled: true,
-           layerFunctionOn: 'loadBasol()',
-           layerFunctionOff: 'clearLayer(5)'
-         }, {
-           layerName: 'BASOL',
-           inputName: 'ssp',
-           inputType: 'radio',
-           inputDisabled: true,
-           layerFunctionOn: 'loadBasol()'
-         }, {
-           layerName: 'BASIAS',
-           inputName: 'ssp',
-           inputType: 'radio',
-           inputDisabled: true,
-           layerFunctionOn: 'loadBasol()'
-         }]
-        });
-       menu.addTo(map);
+      var menu = new L.layersManager({
+        position: 'topright',
+        layers: [{
+          layerName: 'GIE La Ville Autrement',
+          inputType: 'checkbox',
+          layerFunctionOn: 'loadMarkers()',
+          layerFunctionOff: 'clearLayer(1)'
+        }, {
+          layerName: 'Cadastre',
+          inputType: 'checkbox',
+          layerFunctionOn: 'loadParcels()',
+          layerFunctionOff: 'clearLayer(2)'
+        }, {
+          layerName: 'PLU-H',
+          inputName: 'pluh',
+          inputType: 'checkbox',
+          layerFunctionOn: '',
+          layerFunctionOff: 'clearLayer(3)'
+        }, {
+          layerName: 'Zonage et réglement',
+          inputName: 'pluh',
+          inputType: 'radio',
+          layerFunctionOn: 'loadPluh("aLayerName1")'
+        }, {
+          layerName: 'Orientations d\'Aménagement et de Programmation',
+          inputName: 'pluh',
+          inputType: 'radio',
+          layerFunctionOn: 'loadPluh("aLayerName2")'
+        }, {
+          layerName: 'Périmètres d\'attente de projet',
+          inputName: 'pluh',
+          inputType: 'radio',
+          layerFunctionOn: 'loadPluh("aLayerName3")'
+        }, {
+          layerName: 'Secteurs de mixité sociale',
+          inputName: 'pluh',
+          inputType: 'radio',
+          layerFunctionOn: 'loadPluh("aLayerName4")'
+        }, {
+          layerName: 'Réservations pour programmes de logements',
+          inputName: 'pluh',
+          inputType: 'radio',
+          layerFunctionOn: 'loadPluh("aLayerName5")'
+        }, {
+          layerName: 'Emplacements réservés',
+          inputName: 'pluh',
+          inputType: 'radio',
+          layerFunctionOn: 'loadPluh("aLayerName6")'
+        }, {
+          layerName: 'Presctiption de hauteur de façades',
+          inputName: 'pluh',
+          inputType: 'radio',
+          layerFunctionOn: 'loadPluh("aLayerName7")'
+        }, {
+          layerName: 'Secteurs de taille minimale de logement',
+          inputName: 'pluh',
+          inputType: 'radio',
+          layerFunctionOn: 'loadPluh("aLayerName8")'
+        }, {
+          layerName: 'Demandes de valeurs foncières',
+          inputType: 'checkbox',
+          layerFunctionOn: 'loadDvf()',
+          layerFunctionOff: 'clearLayer(4)'
+        }, {
+          layerName: 'Sites et sols pollués',
+          inputName: 'ssp',
+          inputType: 'checkbox',
+          inputDisabled: true,
+          layerFunctionOn: 'loadBasol()',
+          layerFunctionOff: 'clearLayer(5)'
+        }, {
+          layerName: 'BASOL',
+          inputName: 'ssp',
+          inputType: 'radio',
+          inputDisabled: true,
+          layerFunctionOn: 'loadBasol()'
+        }, {
+          layerName: 'BASIAS',
+          inputName: 'ssp',
+          inputType: 'radio',
+          inputDisabled: true,
+          layerFunctionOn: 'loadBasol()'
+        }]
+      });
+      menu.addTo(map);
 
-       const listCommand = document.getElementById('show-hide');
-
-       listCommand.onclick = function() {
-         let div = document.getElementById('leaflet-layers-manager-list');
-         let icon = document.getElementById('show-hide-btn');
-         if (div.style.display !== 'none') {
-             div.style.display = 'none';
-             icon.style.transform = 'rotateX(180deg)';
-             //icon.innerHTML = 'keyboard_arrow_down';
-         }
-         else {
-             div.style.display = 'block';
-             icon.style.transform = 'rotateX(0deg)';
-             //title.innerHTML = 'keyboard_arrow_up';
-
-         }
-       };
-       function loadMarkers(a) {
-         console.log('loadMarkers(layer)');
-       };
-       function loadParcels(a) {
-         console.log('loadParcels(' + a + ')');
-       };
-       function loadPluh(a) {
-         console.log('loadPluh(' + a + ')');
-       };
-       function loadDvf(a) {
-         console.log('loadDvf(' + a + ')');
-       };
-       function clearLayer(a) {
-         console.log('clearLayer(' + a + ')');
-       }
+      const listCommand = document.getElementById('show-hide');
+      listCommand.onclick = function() {
+        let div = document.getElementById('leaflet-layers-manager-list');
+        let icon = document.getElementById('show-hide-btn');
+        if (div.style.display !== 'none') {
+          div.style.display = 'none';
+          icon.style.transform = 'rotateX(180deg)';
+        }
+        else {
+          div.style.display = 'block';
+          icon.style.transform = 'rotateX(0deg)';
+        }
+      };
+      function loadMarkers(a) {
+       console.log('loadMarkers(layer)');
+      };
+      function loadParcels(a) {
+       console.log('loadParcels(' + a + ')');
+      };
+      function loadPluh(a) {
+       console.log('loadPluh(' + a + ')');
+      };
+      function loadDvf(a) {
+       console.log('loadDvf(' + a + ')');
+      };
+      function clearLayer(a) {
+       console.log('clearLayer(' + a + ')');
+      }
     </script>
   </body>
 </html>
