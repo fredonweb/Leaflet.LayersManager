@@ -1,15 +1,14 @@
 (function (factory, window) {
-
-    // define an AMD module that relies on 'leaflet'
-    if (typeof define === 'function' && define.amd) {
-        define(['leaflet'], factory);
+  // define an AMD module that relies on 'leaflet'
+  if (typeof define === 'function' && define.amd) {
+    define(['leaflet'], factory);
     // define a Common JS module that relies on 'leaflet'
-    } else if (typeof exports === 'object') {
-        module.exports = factory(require('leaflet'));
-    } else {
-        // Assume Leaflet is loaded into global object L already
-        factory(L);
-    }
+  } else if (typeof exports === 'object') {
+    module.exports = factory(require('leaflet'));
+  } else {
+    // Assume Leaflet is loaded into global object L already
+    factory(L);
+  }
 }(function (L) {
   //'use strict';
   L.Control.layersManager = L.Control.extend({
@@ -26,8 +25,6 @@
     },
     initialize: function(options) {
       L.Util.setOptions(this, options);
-      //const layersList = options.layers;
-      //console.log(layersList);
     },
     onAdd: function(map) {
       // Container

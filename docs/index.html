@@ -29,7 +29,7 @@
       	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map);
 
-      var menu = new L.layersManager({
+      L.layersManager({
         position: 'topright',
         layers: [{
           layerName: 'GIE La Ville Autrement',
@@ -112,8 +112,7 @@
           inputDisabled: true,
           layerFunctionOn: 'loadBasol()'
         }]
-      });
-      menu.addTo(map);
+      }).addTo(map);
 
       const listCommand = document.getElementById('show-hide');
       listCommand.onclick = function() {
@@ -128,6 +127,7 @@
           icon.style.transform = 'rotateX(0deg)';
         }
       };
+
       function loadMarkers(a) {
        console.log('loadMarkers(layer)');
       };
