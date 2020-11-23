@@ -105,6 +105,7 @@ html, body {
   border: 2px solid rgb(237, 47, 72);
 }
 .disabled {
-    color: lightgray !important;
-    font-weight: lighter !important;
+    /*color: lightgray !important;
+    font-weight: lighter !important;*/
+    display: none !important;
 }
